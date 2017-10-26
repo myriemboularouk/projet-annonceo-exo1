@@ -1,0 +1,71 @@
+
+    <body>
+        <nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <?php echo '<a class="navbar-brand" href="' . URL . 'accueil.php">Annonceo</a>'?>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+          <?php
+          if(userAdmin())
+          { // page accès admin
+              echo '<li class="dropdown">';
+              echo '<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Gestion <span class="caret"></span></a>';
+                echo '<ul class="dropdown-menu">';
+                  echo '<li><a href="' . URL . 'backoffice/gestion_annonces.php">Annonces</a></li>';
+                  echo '<li><a href="' . URL . 'backoffice/gestion_categories.php">Catégories</a></li>';
+                  echo '<li><a href="' . URL . 'backoffice/gestion_membres.php">Membres</a></li>';
+                  echo '<li><a href="' . URL . 'backoffice/gestion_commentaires.php">Commentaires</a></li>';
+                  echo '<li><a href="' . URL . 'backoffice/gestion_notes.php">Notes</a></li>';
+               echo '</ul>';
+          }
+          if(userConnecte())
+          { // accès page membre et admin
+               echo '<li><a href="'. URL .'profil.php">Profil</a></li>';
+               echo '<li><a href="'. URL .'depot_annonce.php">Déposer une annonce</a></li>';
+               echo '<ul class="nav navbar-nav navbar-right">';
+               echo '<li><a href="' . URL . 'connexion.php?action=deconnexion">Déconnexion</a></li>';
+               echo '</ul>';
+
+
+          }
+          else
+          { // internaute...
+              echo '<li><a href="inscription.php">Profil</a></li>';
+              echo '<li><a href="connexion.php">Connexion</a></li>';
+              echo '<li><a href="inscription.php">Inscription</a></li>';
+
+          }
+
+          ?>
+
+
+
+      </ul>
+
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="#">Link</a></li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="#">Action</a></li>
+            <li><a href="#">Another action</a></li>
+            <li><a href="#">Something else here</a></li>
+            <li role="separator" class="divider"></li>
+            <li><a href="#">Separated link</a></li>
+          </ul>
+        </li>
+      </ul>
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
